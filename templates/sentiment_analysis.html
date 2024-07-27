@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer's Sentiment Analysis</title>
+    <style>
+        body {
+            text-align: center;
+            font-size: 26px;
+        }
+
+        button {
+            color: aliceblue;
+            background-color: blue;
+            font-size: 16px;
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customer's Sentiment Analysis</h1>
+    <div>
+        <form method="POST" action="/predict">
+            <textarea name="review_text" placeholder="Type Or Paste Any Review Text Here." rows="20" cols="80" autocomplete="off">
+                {{ text }}
+            </textarea>
+            <div>
+                <button type = "Submit">
+                    Submit
+                </button>
+                <a href="/">Reset</a>
+                <style>
+                    body {
+                        text-align: center;
+                    }
+
+                    button {
+                        color: aliceblue;
+                        background-color: blue;      
+                    }
+                </style>
+            </div>
+        </form>
+    </div>
+    <div>
+        {% if prediction %}
+        {% if prediction == 1 %}
+        <h2 style="color: green">Positive Comment!</h2>
+        {% else %}
+        <h2 style="color: red">Negative Comment</h2>
+        {% endif %}
+        {% endif %}
+        <!-- <p id="display"></p> -->
+    </div>
+</body>
+</html>
